@@ -1,0 +1,39 @@
+@model IEnumerable<MusicRancho_Web.Models.Dto.RanchoNumberDTO>
+<br />
+<div class="container p-4 border">
+    <div class="row pb-2">
+        <div class="col">
+			<h1 class="text-primary">Rancho Number List</h1>
+        </div>
+        <div class="col text-end pt-1">
+			<a asp-controller="RanchoNumber" asp-action="CreateRanchoNumber" class="btn btn-outline-primary"><i class="bi bi-plus-square-fill"></i> Create New Rancho Number</a>
+        </div>
+    </div>
+
+    <table class="table">
+		<thead>
+			<tr>
+				<th>
+					Rancho Name
+				</th>
+				<th>
+					Rancho Number
+				</th>
+				<th></th>
+			</tr>
+		</thead>
+		<tbody>
+			@foreach(var item in Model){
+				<tr>
+					<td>@item.Rancho.Name</td>
+					<td>@item.RanchoNo</td>
+					<td>
+						<a asp-controller="RanchoNumber" asp-action="UpdateRanchoNumber" asp-route-ranchoNo="@item.RanchoNo" class="btn btn-success"><i class="bi bi-pencil-square"></i></a>
+						<a asp-controller="RanchoNumber" asp-action="DeleteRanchoNumber" asp-route-ranchoNo="@item.RanchoNo" class="btn btn-danger"><i class="bi bi-trash-fill"></i></a>
+					</td>
+				</tr>
+			}
+		</tbody>
+    </table>
+
+</div>
